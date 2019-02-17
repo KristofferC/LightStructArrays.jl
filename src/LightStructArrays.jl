@@ -1,6 +1,6 @@
 module LightStructArrays
 
-export StructArray, StructVector
+export StructArray, StructVector, fieldarrays
 
 include("interface.jl")
 include("structarray.jl")
