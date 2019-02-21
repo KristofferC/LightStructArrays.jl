@@ -1,7 +1,7 @@
 # LightStructArrays
 
-[![Build Status](https://travis-ci.org/piever/LightStructArrays.jl.svg?branch=master)](https://travis-ci.org/piever/LightStructArrays.jl)
-[![codecov.io](http://codecov.io/github/piever/LightStructArrays.jl/coverage.svg?branch=master)](http://codecov.io/github/piever/LightStructArrays.jl?branch=master)
+[![Build Status](https://travis-ci.org/KristofferC/LightStructArrays.jl.svg?branch=master)](https://travis-ci.org/piever/LightStructArrays.jl)
+[![codecov.io](http://codecov.io/github/KristofferC/LightStructArrays.jl/coverage.svg?branch=master)](http://codecov.io/github/piever/LightStructArrays.jl?branch=master)
 
 This package introduces the type `StructArray` which is an `AbstractArray` whose elements are `struct` (for example `NamedTuples`,  or `ComplexF64`, or a custom user defined `struct`). While a `StructArray` iterates `structs`, the layout is column based (meaning each field of the `struct` is stored in a seprate `Array`).
 
