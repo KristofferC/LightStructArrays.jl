@@ -57,21 +57,3 @@ createinstance(::Type{T}, args...) where {T<:Union{Tuple, NamedTuple}} = T(args)
     construct = Expr(:new, :T, (:(convert(fieldtype(T, $(Expr(:quote, sym))), $sym)) for sym in v)...)
     Expr(:block, new_tup, construct)
 end
-
-createtype(::Type{T}, ::Type{NamedTuple{names, types}}) where {T, names, types} = createtype(T, names, eltypes(types))
-
-createtype(::Type{T}, names, types) where {T} = T
-createtype(::Type{T}, names, types) where {T<:Tuple} = types
-createtype(::Type{<:NamedTuple{T}}, names, types) where {T} = NamedTuple{T, types}
-function createtype(::Type{<:Pair}, names, types)
-    tp = types.parameters
-    Pair{tp[1], tp[2]}
-end
-
-iseltype(::S, ::T) where {S, T<:AbstractArray} = iscompatible(S, T)
-
-iscompatible(::Type{S}, ::Type{<:AbstractArray{T}}) where {S, T} = S<:T
-
-function iscompatible(::Type{S}, ::Type{StructArray{T, N, C}}) where {S, T, N, C}
-    all_types(iscompatible, staticschema(S), C)
-end
